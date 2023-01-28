@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FrostFlix</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+</head>
+<body class="all">
+    <main>
+ 
+        <div class="TopBanner" position =right>
+            <h1>{{user.name}}       <img src="{{user.pic}}" height="50" width="50"></h1>
+        </div>
+
+
+<!--
+        <div>
+            <iframe width="560" height="315" src="{{user.movie}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+        </div>
+-->
+        
+
+
+
+                <div class="name">
+                    {% if user.HereBefore%}
+                    <h1> Continue Watching for {{user.name}}</h1>
+                    
+
+                <div class="results">
+                    {% for photo in user.photos %}
+                    <div class="image">
+                        <img src="{{photo}}">
+                    </div>
+                   {% endfor %}
+                </div> 
+
+
+
+                   
+                    {% endif %}
+                </div>
+               
+
+
+
+
+
+            
+            
+        
+    </main> 
+</body>
+</html>
