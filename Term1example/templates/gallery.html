@@ -11,32 +11,25 @@
     <main>
  
         <div class="TopBanner" position =right>
-            <h1>{{user.name}}       <img src="{{user.pic}}" height="50" width="50"></h1>
+            <h1>{{user.name}}</h1>
+            <img src="{{user.pic}}" height="50" width="50">
         </div>
-
-
 <!--
         <div>
             <iframe width="560" height="315" src="{{user.movie}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
         </div>
 -->
-        
-
-
 <br>
 <br>
 <br>
 <br> 
 <br>
                 <div class="name">
-                    {% if user.HereBefore%}
+                    {% if user.here_before %}
                     <h1> Continue Watching for {{user.name}}</h1>
-
                     <br>
                     <br>
-                    
-
                 <div class="results">
                     {% for photo in user.photos %}
                     <div class="image">
