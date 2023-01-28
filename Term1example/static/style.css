@@ -58,12 +58,10 @@ justify-content: center;
     background-repeat: no-repeat;
     font-size: 25px;
   }
-
-
   .TopBanner{
-    position:absolute;
-    top: 50;
-    right: 100;
+    display: flex;
+    align-content: right;
+    
   }
    
    .results {
