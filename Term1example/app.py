@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request
+import requests
 
-
-profile_selected=""  
+profile_selected=""
+playlist = " " 
 
 
 app = Flask(__name__)
@@ -13,12 +14,19 @@ def index():
 
 @app.route('/profile_selection', methods=['POST'])
 def post_message():
+    
+    api_key = "AIzaSyA_K_vgbbsFRtH5WvP3Jx47_TvztoAD4fs"
+    
+    
+    
+    
     me = {
         'name': 'Coach Julian',
         'pic': 'https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png',
         'here_before': True,
         'movie' : 'https://www.youtube.com/watch?v=vxvP9zSOL7s',
-        'photos': ['https://static.bunnycdn.ru/i/cache/images/4/42/422670a855efae8d8d8fafb59d43c197.jpg', 'https://static.bunnycdn.ru/i/cache/images/2018/04/ef7eece108cfbe794eb505dc983f7fe4.jpg', 'https://static.bunnycdn.ru/i/cache/images/2018/05/4c127405d9fa8f78a9d86052721cbefe.jpg','https://static.bunnycdn.ru/i/cache/images/2019/04/961fbb823be55a3f4310c7cc944ec585.jpg']
+        #'photos': ['https://static.bunnycdn.ru/i/cache/images/4/42/422670a855efae8d8d8fafb59d43c197.jpg', 'https://static.bunnycdn.ru/i/cache/images/2018/04/ef7eece108cfbe794eb505dc983f7fe4.jpg', 'https://static.bunnycdn.ru/i/cache/images/2018/05/4c127405d9fa8f78a9d86052721cbefe.jpg','https://static.bunnycdn.ru/i/cache/images/2019/04/961fbb823be55a3f4310c7cc944ec585.jpg']
+        'playlist': 'PLFl907chpCa6nKger8cXrlUjoHsLJwl1V'
     }
 
     leech = {
@@ -43,7 +51,7 @@ def post_message():
 
     if "Me" in request.form:
         profile_selected = me
-        #print(profile_selected)
+        
     elif "Leech" in request.form:
         profile_selected = leech
         #print("2")
@@ -51,8 +59,16 @@ def post_message():
         profile_selected = friends
     elif "Kids" in request.form:
         profile_selected = kids
-     
-    return render_template('gallery.html', user=profile_selected)
+
+    playlist = profile_selected['playlist']
+
+    response = requests.get(f"https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId={playlist}&key={api_key}")
+    parsed_playlist= response.json()
+
+    #pulls specific info?
+    video_ids= [item['snippet']['resourceId']['videoId'] for item in playlist['items']]
+    
+    return render_template('gallery.html', user=profile_selected, video_ids=video_ids)
 
 if __name__=='__main__':
     app.run(debug=True, host='0.0.0.0')
