@@ -1,19 +1,19 @@
 html {
-    height: 95%;
+  height: 95%;
 }
 
 body {
-    font-family: 'Cabin', sans-serif;
-    background-color: grey;
-    height: 95%;
+  font-family: 'Cabin', sans-serif;
+  background-color: grey;
+  height: 95%;
 }
 
 
 
 .all {
-    font-family: 'Cabin', sans-serif;
-    background-color: grey;
-    height: 95%;
+  font-family: 'Cabin', sans-serif;
+  background-color: grey;
+  height: 95%;
 }
 
 .Who_are_you {
@@ -23,55 +23,57 @@ body {
 }
 
 .submit-btn1 {
-    width: 200px;
-    height: 200px;
-    background-image: url(/static/img/image1.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    font-size: 25px;
-  }
+  width: 200px;
+  height: 200px;
+  background-image: url(/static/img/image1.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-size: 25px;
+}
 
 
 .submit-btn2 {
-    width: 200px;
-    height: 200px;
-    background-image: url(/static/img/image2.jpeg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    font-size: 25px;
-  }
-
-.submit-btn3 {
-    width: 200px;
-    height: 200px;
-    background-image: url(/static/img/image3.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    font-size: 25px;
-  }
-
-.submit-btn4 {
-    width: 200px;
-    height: 200px;
-    background-image: url(/static/img/image4.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    font-size: 25px;
-  }
-  .TopBanner{
-    display: flex;
-    align-content: right;
-    
-  }
-   
-   .results {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    
-   
+  width: 200px;
+  height: 200px;
+  background-image: url(/static/img/image2.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-size: 25px;
 }
 
-.image {
-     width: 20%;
+.submit-btn3 {
+  width: 200px;
+  height: 200px;
+  background-image: url(/static/img/image3.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-size: 25px;
+}
+
+.submit-btn4 {
+  width: 200px;
+  height: 200px;
+  background-image: url(/static/img/image4.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-size: 25px;
+}
+
+.top_banner {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: stretch;
+  background-color: deepskyblue;
+
+}
+
+
+
+.results {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: nowrap;
+  align-content: space-between;
 }

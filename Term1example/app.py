@@ -33,7 +33,8 @@ def post_message():
         'name': 'Leech',
         'pic': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAEy-Hi3lntqni03_IgMHV_6nbWR5sG5EuE11oKCej1YqlHvxzo6lfyF7L_JXrJaoZIkY&usqp=CAU',
         'here_before': True,
-        'photos': ['https://m.media-amazon.com/images/M/MV5BMjE2NDkxNTY2M15BMl5BanBnXkFtZTgwMDc2NzE0MTI@._V1_QL75_UX100_CR0,3,100,148_.jpg','https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_QL75_UX100_CR0,0,100,148_.jpg','https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_QL75_UX100_CR0,0,100,148_.jpg', 'https://m.media-amazon.com/images/M/MV5BNDg1NTU2OWEtM2UzYi00ZWRmLWEwMTktZWNjYWQ1NWM1OThjXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_QL75_UX100_CR0,0,100,148_.jpg']
+        'photos': ['https://m.media-amazon.com/images/M/MV5BMjE2NDkxNTY2M15BMl5BanBnXkFtZTgwMDc2NzE0MTI@._V1_QL75_UX100_CR0,3,100,148_.jpg','https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_QL75_UX100_CR0,0,100,148_.jpg','https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_QL75_UX100_CR0,0,100,148_.jpg', 'https://m.media-amazon.com/images/M/MV5BNDg1NTU2OWEtM2UzYi00ZWRmLWEwMTktZWNjYWQ1NWM1OThjXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_QL75_UX100_CR0,0,100,148_.jpg'],
+        'playlist': 'PLZHQObOWTQDOjmo3Y6ADm0ScWAlEXf-fp'
     }
 
     friends = {
@@ -65,9 +66,18 @@ def post_message():
     response = requests.get(f"https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId={playlist}&key={api_key}")
     parsed_playlist= response.json()
 
-    #pulls specific info?
-    video_ids= [item['snippet']['resourceId']['videoId'] for item in playlist['items']]
     
+    print(parsed_playlist)
+    print("1")
+
+    #pulls specific info?
+    video_ids = []
+    for item in parsed_playlist['items']:
+        print(item["id"])
+        video_ids.append(item)
+
+    #video_ids= [item['videoId'] for item in playlist['items']]
+    #print(videoId)
     return render_template('gallery.html', user=profile_selected, video_ids=video_ids)
 
 if __name__=='__main__':
